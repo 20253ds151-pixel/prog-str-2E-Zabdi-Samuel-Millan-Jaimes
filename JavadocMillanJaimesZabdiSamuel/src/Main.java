@@ -20,7 +20,8 @@ System.out.println("Clasificación"+ clasificacion);
 }
 
 /** * Metodo que retorna un valor capturado por terminal
- * @param sc -> previamente declarado en main * @param mensaje -> es un parametro * @return -> double */ public static double obtenerDouble(Scanner sc, String mensaje){
+ * @param sc -> previamente declarado en main * @param mensaje -> es un parametro * @return -> double */
+public static double obtenerDouble(Scanner sc, String mensaje){
 System.out.println(mensaje);
 return sc.nextDouble();
 }
