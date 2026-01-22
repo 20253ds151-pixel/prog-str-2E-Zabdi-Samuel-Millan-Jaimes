@@ -1,3 +1,4 @@
+
 /**
  * Tu programa debe:
  * - Mostrar este menú:
@@ -22,34 +23,14 @@
  * - Resultado (si aplica)
  */
 import java.util.Scanner;
+
 public class ActividadSwitchCalculadora {
-    /* atributos o variables de la clase */
-    public Scanner sc = new Scanner(System.in);
-    public int opcion = 0;
-    public double a = 0, b = 0, resultado = 0;
-    public String operacion = "";
-
     /* metodo principal */
-    public void main(String[] args) {
-        /**
-         * En esta parte del codigo se piden los datos al usuario, se calcula el
-         * resultado
-         * segun la opcion seleccionada y finalmente se imprimen los resultados.
-         */
-        pedirDatos(opcion, a, b);
-        double resultado = calcularResultado(opcion, a, b);
-        imprimirResultados(operacion, a, b, resultado);
-        sc.close();
-    }
-
-    /**
-     * metodo para pedir los datos al usuario
-     * 
-     * @param opcion La opción de operación seleccionada por el usuario
-     * @param a      El primer número ingresado por el usuario
-     * @param b      El segundo número ingresado por el usuario
-     */
-    public void pedirDatos(int opcion, double a, double b) {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int opcion = 0;
+        double a = 0;
+        double b = 0;
         System.out.println("Menú de Operaciones:");
         System.out.println("1) Sumar");
         System.out.println("2) Restar");
@@ -57,45 +38,56 @@ public class ActividadSwitchCalculadora {
         System.out.println("4) Dividir");
         System.out.print("Elige una opción (1-4): ");
         opcion = sc.nextInt();
+        /* Se condiciona si no cumple se sale del programa */
+        if (opcion < 1 || opcion > 4) {
+            System.out.println("Opción inválida");
+            sc.close();
+            return;
+        }
         System.out.print("Ingresa el primer número (a): ");
         a = sc.nextDouble();
         System.out.print("Ingresa el segundo número (b): ");
         b = sc.nextDouble();
+        calcularResultado(opcion, a, b);
+        sc.close();
+
     }
 
     /**
      * metodo para calcular el resultado basado en la opcion seleccionada
      * 
      * @param opcion La opción de operación seleccionada por el usuario
-     * @param a      El primer número ingresado por el usuario
-     * @param b      El segundo número ingresado por el usuario
-     * @return El resultado de la operación realizada
+     * @param a El primer número ingresado por el usuario
+     * @param b El segundo número ingresado por el usuario
+     * @return El resultado de la operación realizada junto con la impresión de los
+     * resultados
      */
-    public double calcularResultado(int opcion, double a, double b) {
-        switch (opcion) {
+    public static double calcularResultado(int opcion, double a, double b) {
+        double resultado = 0;
+        String operacion = "";
+        switch (opcion ) {
             case 1:
-                operacion = "Suma";
                 resultado = a + b;
+                operacion = "Suma";
                 break;
             case 2:
-                operacion = "Resta";
                 resultado = a - b;
+                operacion = "Resta";
                 break;
             case 3:
-                operacion = "Multiplicación";
                 resultado = a * b;
+                operacion = "Multiplicación";
                 break;
             case 4:
-                operacion = "División";
                 if (b == 0) {
                     System.out.println("No se puede dividir entre cero");
                 } else {
                     resultado = a / b;
+                    operacion = "División";
                 }
                 break;
-            default:
-                System.out.println("Opción inválida");
         }
+        imprimirResultados(operacion, a, b, resultado);
         return resultado;
     }
 
@@ -103,13 +95,13 @@ public class ActividadSwitchCalculadora {
      * metodo para imprimir los resultados finales
      * 
      * @param operacion La operación realizada
-     * @param a         El primer número ingresado por el usuario
-     * @param b         El segundo número ingresado por el usuario
-     * @param resultado El resultado de la operación realizada
+     * @param a El primer número ingresado por el usuario
+     * @param b El segundo número ingresado por el usuario
+     * @param calculo El resultado de la operación realizada
      */
-    public void imprimirResultados(String operacion, double a, double b, double resultado) {
+    public static void imprimirResultados(String operacion, double a, double b, double calculo) {
         System.out.printf("Operación: %s%n", operacion);
-        System.out.printf("Valores ingresados: a = %.2f, b = %.2f%n", a, b);
-        System.out.printf("Resultado: %.2f%n", resultado);
+        System.out.printf("Valores ingresados: a = %.2f y b = %.2f%n", a, b);
+        System.out.printf("Resultado: %.2f%n", calculo);
     }
 }
