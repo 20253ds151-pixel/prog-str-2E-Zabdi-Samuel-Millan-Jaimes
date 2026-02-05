@@ -79,7 +79,7 @@ public class Adivina_el_Numero {
 
             }
 
-        } while (!gano && intentoUsuario < MAX_INTENTOS);
+        } while (!gano && intentoUsuario <= MAX_INTENTOS);
         // Resultados finales
         if (!gano) {
             // Usuario no adivinó el número
