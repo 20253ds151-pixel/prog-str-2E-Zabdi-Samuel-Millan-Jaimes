@@ -51,7 +51,6 @@ public class index {
                     p1.setNombre(new java.util.Scanner(System.in).nextLine());
                     System.out.println("Ingrese estado (true/false):");
                     p1.setEstado(new java.util.Scanner(System.in).nextBoolean());
-                    p1.validar(p1.getId(), p1.getNombre(), p1.getEstado());
                     p1.personas(p1.getId(), p1.getNombre(), p1.getEstado());
                     break;
                 case 2:

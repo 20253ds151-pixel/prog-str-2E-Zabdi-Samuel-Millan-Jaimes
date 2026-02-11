@@ -31,15 +31,21 @@ public class persona {
         return estado;
     }
 
-    public void validar(int id, String nombre, boolean estado) {
+    public void personas(int id, String nombre, boolean estado) {
+        // Validar que los ID sean unicos y no se repitan y rechasa la creación de una persona con un ID ya existente
+        for (persona p : personas) {
+            if (p != null && p.getId() == id) {
+                System.out.println("Error: ID ya existe. No se puede crear la persona.\n");
+                return;
+            }
+            // Validar que el ID sea mayor a 0 y el nombre no esté vacío
         if (id > 0 && !nombre.isEmpty()) {
             System.out.println("Datos válidos. Persona creada.\n");
         } else {
             System.out.println("Datos inválidos. ID debe ser mayor a 0 y nombre no puede estar vacío.\n");
         }
-    }
-
-    public void personas(int id, String nombre, boolean estado) {
+        }
+        // Agregar persona al arreglo
         for (int i = 0; i < personas.length; i++) {
             if (personas[i] == null) {
                 personas[i] = new persona();
@@ -49,6 +55,7 @@ public class persona {
                 break;
             }
         }
+        // Listar todas las personas
         for (persona p : personas) {
             if (p != null) {
                 System.out.println("ID: " + p.getId() + "\tNombre: " + p.getNombre() + "\tEstado: " + (p.getEstado() ? "Activo" : "Inactivo")+"\n");
@@ -57,17 +64,20 @@ public class persona {
     }
 
     public persona buscarid(int id) {
+        // Buscar persona por ID
         for (persona p : personas) {
             if (p != null && p.getId() == id) {
                 System.out.println("Persona encontrada: " + p.getNombre()+"\n");
                 return p;
             }
         }
+        // Si no se encuentra la persona o está inactiva
         System.out.println("Persona no encontrada.\n");
         return null;
     }
 
     public persona bajalogica(int id) {
+        // Dar de baja lógica a una persona por ID
         for (persona p : personas) {
             if (p != null && p.getId() == id) {
                 p.setEstado(false);
@@ -75,11 +85,13 @@ public class persona {
                 return p;
             }
         }
+        // Si no se encuentra la persona
         System.out.println("Persona no encontrada. \n");
         return null;
     }
 
     public void listaractivas() {
+        // Listar personas activas
         for (persona p : personas) {
             if (p != null && p.getEstado()) {
                 System.out.println("ID: " + p.getId() + "\t Nombre: " + p.getNombre()+"\n");
@@ -88,6 +100,7 @@ public class persona {
     }
 
     public void listarInactivas() {
+        // Listar personas inactivas
         for (persona p : personas) {
             if (p != null && !p.getEstado()) {
                 System.out.println("ID: " + p.getId() + "\t Nombre: " + p.getNombre()+"\n");
@@ -96,6 +109,7 @@ public class persona {
     }
 
     public persona actualizPersona(int id, String nuevoNombre) {
+        // Actualizar el nombre de una persona por ID
         for (persona p : personas) {
             if (p != null && p.getId() == id) {
                 p.setNombre(nuevoNombre);
