@@ -52,6 +52,7 @@ public class index {
                     System.out.println("Ingrese estado (true/false):");
                     p1.setEstado(new java.util.Scanner(System.in).nextBoolean());
                     p1.personas(p1.getId(), p1.getNombre(), p1.getEstado());
+                    p1.listadopersonas();
                     break;
                 case 2:
                     // buscar por id
