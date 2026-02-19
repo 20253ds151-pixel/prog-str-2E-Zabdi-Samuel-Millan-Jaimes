@@ -1,4 +1,4 @@
-/**
+/*
  * Menú (mínimo):
  * 1) Alta
  * 2) Buscar por ID (solo activas)
@@ -6,13 +6,13 @@
  * 4) Listar activas
  * 5) Actualizar nombre por ID (solo activas)
  * 0) Salir
- * 
+
  * VALIDACIONES OBLIGATORIAS
  * - id > 0
  * - nombre NO vacío
  * - no permitir id repetido
  * - opción inválida en el menú debe mostrar mensaje y volver a pedir
- * 
+
  * CASOS DE PRUEBA
  * - Alta de 3 personas.
  * - Intento de alta con ID repetido (debe rechazar).

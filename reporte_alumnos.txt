@@ -1,0 +1,6 @@
+========== REPORTE DE ALUMNOS ==========
+Promedio General Activos: 8.633333333333333
+Mejor Promedio: ID 123 | samuel (9.5)
+Menor Promedio: ID 456 | ian (8.2)
+Alumnos con promedio >= 8.0: 3
+========================================
