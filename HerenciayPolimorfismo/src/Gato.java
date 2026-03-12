@@ -1,4 +1,10 @@
-package PACKAGE_NAME;
+public class Gato extends Animal {
+    public Gato(String nombre) {
+        super(nombre);
+    }
 
-public class Gato {
+    @Override
+    public void hacerSonido() {
+        System.out.println(getNombre() + " Esta maullando");
+    }
 }
