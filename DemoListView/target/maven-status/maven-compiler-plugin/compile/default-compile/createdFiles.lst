@@ -1,7 +1,0 @@
-com\example\demolistview\HelloController.class
-module-info.class
-com\example\demolistview\controllers\AppControllers.class
-com\example\demolistview\service\PersonService.class
-com\example\demolistview\Launcher.class
-com\example\demolistview\HelloApplication.class
-com\example\demolistview\repositories\PersonFilesRepository.class
