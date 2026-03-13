@@ -1,4 +1,4 @@
-package com.example.demolistview.services;
+package com.example.demolistview.service;
 
 import com.example.demolistview.repositories.PersonFilesRepository;
 
@@ -19,6 +19,7 @@ public class PersonService {
             if (line==null || line.isBlank()) continue;
 
             String[] parts = line.split(",");
+            if (parts.length < 2) continue;
             String name = parts[0];
             String email = parts[1];
 
@@ -30,7 +31,10 @@ public class PersonService {
 
     public void addPerson(String name, String email) throws IOException {
         validate(name, email);
-        repo.appendNewLine(name+","+email);
+        // Limpiamos los datos de comas accidentales para no romper el CSV
+        String cleanName = name.replace(",", " ");
+        String cleanEmail = email.replace(",", " ");
+        repo.appendNewLine(cleanName + "," + cleanEmail);
     }
 
     private void validate(String name, String email){

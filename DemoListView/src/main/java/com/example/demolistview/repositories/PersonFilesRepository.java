@@ -10,23 +10,28 @@ import java.util.List;
 
 public class PersonFilesRepository {
 
-    private final Path filetPath = Paths.get("data","persons.csv");
+    private final Path filePath = Paths.get("data", "persons.csv");
 
+    // AQUÍ VA EL MÉTODO CORREGIDO
     private void ensureFile() throws IOException {
-        if(Files.notExists(filetPath)){
-            Files.createFile(filetPath);
+        // 1. Verifica si la carpeta "data" existe, si no, la crea
+        if (filePath.getParent() != null && Files.notExists(filePath.getParent())) {
+            Files.createDirectories(filePath.getParent());
+        }
+        // 2. Verifica si el archivo "persons.csv" existe, si no, lo crea
+        if (Files.notExists(filePath)) {
+            Files.createFile(filePath);
         }
     }
 
     public List<String> readAllLines() throws IOException {
-        ensureFile();
-        return Files.readAllLines(filetPath);
+        ensureFile(); // Se llama aquí para asegurar que el archivo existe antes de leer
+        return Files.readAllLines(filePath);
     }
 
     public void appendNewLine(String line) throws IOException {
-        ensureFile();
-        Files.writeString(filetPath,line+System.lineSeparator(), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+        ensureFile(); // Se llama aquí para asegurar que el archivo existe antes de escribir
+        Files.writeString(filePath, line + System.lineSeparator(),
+                StandardCharsets.UTF_8, StandardOpenOption.APPEND);
     }
-
-
 }

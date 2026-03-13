@@ -11,5 +11,6 @@ module com.example.demolistview {
     requires com.almasb.fxgl.all;
 
     opens com.example.demolistview to javafx.fxml;
+    opens com.example.demolistview.controllers to javafx.fxml;
     exports com.example.demolistview;
 }

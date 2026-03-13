@@ -1,6 +1,6 @@
 package com.example.demolistview.controllers;
 
-import com.example.demolistview.services.PersonService;
+import com.example.demolistview.service.PersonService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,14 +22,15 @@ public class AppControllers {
     private TextField txtEmail;
 
     @FXML
-    private ObservableList<String> data = FXCollections.observableArrayList();
+    private ObservableList<String> data;
 
     private PersonService service = new PersonService();
 
     @FXML
     public void initialize(){
-        loadFromFile();
+        data = FXCollections.observableArrayList(); // Inicialización limpia
         listView.setItems(data);
+        loadFromFile(); // Carga inicial
     }
 
     @FXML
@@ -47,7 +48,8 @@ public class AppControllers {
             lblMsg.setText("Persona creada con exito.");
             txtEmail.clear();
             txtName.clear();
-        }catch (IOException IOException){
+            loadFromFile();
+        }catch (IOException ioException){
             lblMsg.setStyle("-fx-text-fill: red");
             lblMsg.setText("Error con el archivo.");
         }catch (IllegalArgumentException argumentException){
